@@ -1,0 +1,5 @@
+node_modules/
+.env
+.prettierrc
+secret.txt
+X509-cert-3466976044015577137.pem

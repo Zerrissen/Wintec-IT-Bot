@@ -1,0 +1,25 @@
+{
+  "name": "wintec-it-bot",
+  "version": "1.0.0",
+  "description": "A discord bot used for the Wintec Information Technology Student server.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zerrissen/Wintec-IT-Bot.git"
+  },
+  "author": "Nathan Hines",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Zerrissen/Wintec-IT-Bot/issues"
+  },
+  "homepage": "https://github.com/Zerrissen/Wintec-IT-Bot#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "discord.js": "^14.9.0",
+    "dotenv": "^16.0.3",
+    "mongoose": "^7.1.0"
+  }
+}
