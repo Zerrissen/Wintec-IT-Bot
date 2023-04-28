@@ -12,10 +12,10 @@ client.commands = new Collection();
 client.commandArray = [];
 
 const handlerFiles = fs
-	.readdirSync("./src/handlers")
-	.filter((file) => file.endsWith(".js"));
+    .readdirSync("./src/handlers")
+    .filter((file) => file.endsWith(".js"));
 for (const file of handlerFiles) {
-	require(`./handlers/${file}`)(client);
+    require(`./handlers/${file}`)(client);
 }
 
 // Call handlers, then log in with our bot token
