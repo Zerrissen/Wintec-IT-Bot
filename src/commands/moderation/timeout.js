@@ -31,7 +31,7 @@ module.exports = {
         .addStringOption(option => option.setName('reason').setDescription('The reason for giving the user a timeout')),
     async execute(interaction) {
         const target = interaction.options.getUser('user');
-        const targetMember = await interaction.guild.members.fetch(target.id)
+        const targetMember = await interaction.guild.members.fetch(target.id);
         const duration = interaction.options.getString('duration');
 
         if (!interaction.member.permissions.has(PermissionsBitField.Flags.ModerateMembers)) {
@@ -60,7 +60,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
         .setColor(0x0f4a00)
-        .setDescription(`:white_check_mark:  ${targetMember.tag} has been **timed out** for ${duration} minutes | ${reason}`)
+        .setDescription(`:white_check_mark:  ${target.tag} has been **timed out** for ${duration} minutes | ${reason}`)
 
         const dmEmbed = new EmbedBuilder()
         .setColor(0x0f4a00)
