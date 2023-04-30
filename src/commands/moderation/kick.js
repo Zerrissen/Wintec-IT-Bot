@@ -9,11 +9,11 @@ module.exports = {
     async execute(interaction) {
         const target = interaction.options.getUser('user');
 
-        if (!interaction.target.permissions.has(PermissionsBitField.Flags.ModerateMembers)) {
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.ModerateMembers)) {
             return await interaction.reply({ content: 'You must have the moderate members permission to use this command.' });
         }
 
-        if (interaction.target.id == target.id) {
+        if (interaction.member.id == target.id) {
             return await interaction.reply({ content: 'You cannot kick yourself, dingus!' });
         }
 
