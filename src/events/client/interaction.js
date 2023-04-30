@@ -1,4 +1,5 @@
 const { Events } = require("discord.js");
+const chalk = require("chalk");
 
 module.exports = {
     name: Events.InteractionCreate,
@@ -14,9 +15,9 @@ module.exports = {
             try {
                 await command.execute(interaction, client);
             } catch (error) {
-                console.error(error);
+                console.log(chalk.red(`[Command] Error occurred while executing command ${commandName}: \n${error}`));
                 await interaction.reply({
-                    content: `Uh oh! An error occurred while executing this command.`,
+                    content: `Uh oh! An error occurred while executing this command.\nPlease let a moderator know so we can get this fixed.`,
                     ephemeral: true,
                 });
             }
