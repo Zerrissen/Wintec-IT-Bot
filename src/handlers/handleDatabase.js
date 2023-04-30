@@ -1,5 +1,4 @@
 const { connect, connection } = require("mongoose");
-const path = require("path");
 
 module.exports = async (client) => {
     client.handleDatabase = async () => {
@@ -13,7 +12,7 @@ module.exports = async (client) => {
         } catch (error) {
             console.error(error);
             connection.emit("error", error);
-            process.exit(1);
+            process.exit(1); // Exiting because otherwise not much point keeping bot alive with no DB connection
         }
     };
 };
