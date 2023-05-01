@@ -7,7 +7,7 @@ const token = process.env.TOKEN;
 // New client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-// Prepare handlers for use.
+client.modals = new Collection();
 client.commands = new Collection();
 client.commandArray = [];
 
@@ -21,5 +21,6 @@ for (const file of handlerFiles) {
 // Call handlers, then log in with our bot token
 client.handleEvents();
 client.handleCommands();
+client.handleComponents();
 client.handleDatabase();
 client.login(token);
