@@ -1,13 +1,16 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("server")
         .setDescription("Provides information about the server."),
     async execute(interaction) {
-        // interaction.guild is the object representing the Guild in which the command was run
-        await interaction.reply(
-            `This server is ${interaction.guild.name} and has ${interaction.guild.memberCount} members.`
-        );
+        const embed = new EmbedBuilder()
+            .setColor(0x0f4a00)
+            .setDescription(
+                `:white_check_mark:  **The ${interaction.guild.name} server has ${interaction.guild.memberCount} members!**`
+            );
+
+        await interaction.reply({ embeds: [embed] });
     },
 };
