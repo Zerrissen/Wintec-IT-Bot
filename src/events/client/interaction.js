@@ -14,6 +14,7 @@ module.exports = {
 
             try {
                 await command.execute(interaction, client);
+                console.log(chalk.green(`[Command] ${commandName} executed by ${interaction.user.tag}`))
             } catch (error) {
                 console.log(chalk.red(`[Command] Error occurred while executing command ${commandName}: \n${error}`));
                 await interaction.reply({
