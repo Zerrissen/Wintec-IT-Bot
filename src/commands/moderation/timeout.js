@@ -43,7 +43,7 @@ module.exports = {
         }
 
         if (!targetMember) {
-            return await interaction.reply({ content: 'The user mentioned does not exist in this server.'});
+            return await interaction.reply({ content: 'The user mentioned does not exist in this server.' });
         }
 
         if (!targetMember.kickable) {
@@ -52,19 +52,19 @@ module.exports = {
 
 
         if (targetMember.permissions.has(PermissionsBitField.Flags.Administrator)) {
-            return await interaction.reply({ content: 'You cannot timeout a user with an Administrator role.'})
+            return await interaction.reply({ content: 'You cannot timeout a user with an Administrator role.' })
         }
 
         let reason = interaction.options.getString('reason') || 'No reason given.';
         await targetMember.timeout(duration * 1000, reason);
 
         const embed = new EmbedBuilder()
-        .setColor(0x0f4a00)
-        .setDescription(`:white_check_mark:  ${target.tag} has been **timed out** for ${duration} minutes | ${reason}`)
+            .setColor(0x0f4a00)
+            .setDescription(`:white_check_mark:  ${target.tag} has been **timed out** for ${duration} minutes | ${reason}`)
 
         const dmEmbed = new EmbedBuilder()
-        .setColor(0x0f4a00)
-        .setDescription(`:white_check_mark:  You have been timed out in ${interaction.guild.name}. You can check the status of your timeout in the server | ${reason}`)
+            .setColor(0x0f4a00)
+            .setDescription(`:white_check_mark:  You have been timed out in ${interaction.guild.name}. You can check the status of your timeout in the server | ${reason}`)
 
         await targetMember.send({ embeds: [dmEmbed] }).catch(err => {
             return;
