@@ -1,9 +1,9 @@
-const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("server")
-        .setDescription("Provides information about the server."),
+        .setName('server')
+        .setDescription('Provides information about the server.'),
     async execute(interaction) {
         const embed = new EmbedBuilder()
             .setColor(0x0f4a00)

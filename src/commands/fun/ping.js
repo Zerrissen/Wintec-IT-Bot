@@ -1,9 +1,9 @@
-const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("ping")
-        .setDescription("Replies with Pong! and the roundtrip latency."),
+        .setName('ping')
+        .setDescription('Replies with Pong! and the roundtrip latency.'),
     async execute(interaction) {
         const embed = new EmbedBuilder()
             .setColor(0x0f4a00)

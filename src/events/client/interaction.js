@@ -1,5 +1,5 @@
-const { Events, InteractionType } = require("discord.js");
-const chalk = require("chalk");
+const { Events, InteractionType } = require('discord.js');
+const chalk = require('chalk');
 
 module.exports = {
     name: Events.InteractionCreate,
@@ -30,11 +30,14 @@ module.exports = {
                     ephemeral: true,
                 });
             }
-        } else if (interaction.isModalSubmit() || interaction.type == InteractionType.ModalSubmit) {
+        } else if (
+            interaction.isModalSubmit() ||
+            interaction.type == InteractionType.ModalSubmit
+        ) {
             const { modals } = client;
             const { customId } = interaction;
             const modal = modals.get(customId);
-            if (!modal) return new Error("No code for modal");
+            if (!modal) return new Error('No code for modal');
 
             try {
                 await modal.execute(interaction, client);

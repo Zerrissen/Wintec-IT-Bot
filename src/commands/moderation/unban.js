@@ -1,17 +1,17 @@
-const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("unban")
-        .setDescription("Allows a moderator to unban a member from the server.")
+        .setName('unban')
+        .setDescription('Allows a moderator to unban a member from the server.')
         .addUserOption((option) =>
             option
-                .setName("user")
-                .setDescription("The user you want to unban")
+                .setName('user')
+                .setDescription('The user you want to unban')
                 .setRequired(true)
         ),
     async execute(interaction) {
-        const target = interaction.options.getUser("user");
+        const target = interaction.options.getUser('user');
         const targetMember = await interaction.guild.members.fetch(target.id);
 
         if (
@@ -21,19 +21,19 @@ module.exports = {
         ) {
             return await interaction.reply({
                 content:
-                    "You must have the ban members permission to use this command.",
+                    'You must have the ban members permission to use this command.',
             });
         }
 
         if (interaction.member.id == target.id) {
             return await interaction.reply({
-                content: "You cannot unban yourself, dummy!",
+                content: 'You cannot unban yourself, dummy!',
             });
         }
 
         if (!targetMember) {
             return await interaction.reply({
-                content: "The user mentioned does not exist in this server.",
+                content: 'The user mentioned does not exist in this server.',
             });
         }
 
