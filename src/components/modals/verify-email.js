@@ -8,16 +8,20 @@ module.exports = {
     },
     async execute(interaction) {
         let regex = /[A-Za-z0-9]+@student\.wintec\.ac\.nz/i;
-        if (!regex.test(interaction.fields.getTextInputValue('verifyEmailInput'))) {
+        if (
+            !regex.test(
+                interaction.fields.getTextInputValue('verifyEmailInput')
+            )
+        ) {
             const embed = new EmbedBuilder()
-            .setColor(0x0f4a00)
-            .setDescription(
-                ':x:  Please provide a student wintec email address, or contact a moderator.'
-            );
+                .setColor(0x0f4a00)
+                .setDescription(
+                    ':x:  Please provide a student wintec email address, or contact a moderator.'
+                );
 
             await interaction.reply({ embeds: [embed] });
             return;
-        };
+        }
         const embed = new EmbedBuilder()
             .setColor(0x0f4a00)
             .setDescription(
@@ -81,10 +85,6 @@ module.exports = {
                     upsert: true,
                     new: true,
                 });
-
-                console.log(
-                    `Member Tag:${userProfile.userTag}, Member verified: ${userProfile.userVerified}`
-                );
 
                 // Send embed
                 embed.setDescription(':white_check_mark:  Verified!');
