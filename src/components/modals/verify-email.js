@@ -62,7 +62,8 @@ module.exports = {
         await interaction.editReply({ embeds: [embed] });
 
         const collectorFilter = (msg) => {
-            return msg.author.id === interaction.user.id && msg.content;
+            let regex = /[0-9]/i;
+            return msg.author.id === interaction.user.id && regex.test(msg.content);
         };
         const collector = interaction.channel.createMessageCollector({
             filter: collectorFilter,
