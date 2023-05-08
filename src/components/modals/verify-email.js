@@ -88,7 +88,7 @@ module.exports = {
                 });
 
                 // Send embed
-                embed.setDescription(':white_check_mark:  Verified!');
+                embed.setDescription(':white_check_mark:  Beep boop, you have been verified!');
                 interaction.followUp({ embeds: [embed] });
 
                 // Add role
@@ -98,7 +98,7 @@ module.exports = {
                 interaction.member.roles.add(role);
             } else {
                 embed.setDescription(
-                    ':x:  Wrong code. Please run /verify again to get a new code.'
+                    ':x:  Uh oh, wrong code! Please run /verify again to get a new code.'
                 );
                 interaction.followUp({ embeds: [embed] });
             }
