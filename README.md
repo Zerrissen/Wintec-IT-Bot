@@ -1,5 +1,5 @@
 # Wintec IT Bot
-![GitHub repo file count (custom path)](https://img.shields.io/github/directory-file-count/zerrissen/wintec-it-bot/src/commands?label=bot%20commands&style=flat-square) ![GitHub repo size](https://img.shields.io/github/repo-size/zerrissen/wintec-it-bot?style=flat-square) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/zerrissen/wintec-it-bot?color=dark-green&style=flat-square) ![GitHub issues](https://img.shields.io/github/issues-raw/zerrissen/wintec-it-bot?style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/zerrissen/wintec-it-bot?style=flat-square) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/zerrissen/wintec-it-bot?color=dark-green&style=flat-square) ![GitHub issues](https://img.shields.io/github/issues-raw/zerrissen/wintec-it-bot?style=flat-square)
 
 ###### Note: This bot and its authors are not directly affiliated with, nor managed by, Wintec or Te Pukenga, and do not represent their views or policies. This is designed for educational and recreational purposes only.
 
