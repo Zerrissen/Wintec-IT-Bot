@@ -90,7 +90,7 @@ module.exports = {
         ) {
             return await interaction.reply({
                 content:
-                    'You cannot timeout a user with an Administrator role.',
+                    'You cannot timeout a user with an Administrator role, silly!',
             });
         }
 
@@ -101,13 +101,13 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor(0x0f4a00)
             .setDescription(
-                `:white_check_mark:  ${target.tag} has been **timed out** for ${duration} minutes | ${reason}`
+                `:white_check_mark:  Wee woo, ${target.tag} has been **timed out** for ${duration} minutes | ${reason}`
             );
 
         const dmEmbed = new EmbedBuilder()
             .setColor(0x0f4a00)
             .setDescription(
-                `:white_check_mark:  You have been timed out in ${interaction.guild.name}. You can check the status of your timeout in the server | ${reason}`
+                `:white_check_mark:  Wee woo, you have been timed out in ${interaction.guild.name}. You can check the status of your timeout in the server | ${reason}`
             );
 
         await targetMember.send({ embeds: [dmEmbed] }).catch((err) => {

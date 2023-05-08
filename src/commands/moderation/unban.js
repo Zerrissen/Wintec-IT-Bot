@@ -42,13 +42,13 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor(0x0f4a00)
             .setDescription(
-                `:white_check_mark:  ${target.tag} has been **unbanned**`
+                `:white_check_mark:  Woohoo! ${target.tag} has been **unbanned**`
             );
 
         const dmEmbed = new EmbedBuilder()
             .setColor(0x0f4a00)
             .setDescription(
-                `:white_check_mark:  You have been unbanned from ${interaction.guild.name}`
+                `:white_check_mark:  Woohoo! You have been unbanned from ${interaction.guild.name}`
             );
 
         await targetMember.send({ embeds: [dmEmbed] }).catch((err) => {

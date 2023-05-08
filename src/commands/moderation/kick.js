@@ -57,7 +57,7 @@ module.exports = {
             )
         ) {
             return await interaction.reply({
-                content: 'You cannot kick a user with an Administrator role.',
+                content: 'You cannot kick a user with an Administrator role, dingus!',
             });
         }
 
@@ -69,13 +69,13 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor(0x0f4a00)
             .setDescription(
-                `:white_check_mark:  ${target.tag} has been **kicked** | ${reason}`
+                `:white_check_mark:  Wee woo, ${target.tag} has been **kicked** | ${reason}`
             );
 
         const dmEmbed = new EmbedBuilder()
             .setColor(0x0f4a00)
             .setDescription(
-                `:white_check_mark:  You have been kicked from ${interaction.guild.name} | ${reason}`
+                `:white_check_mark:  Wee woo, you have been kicked from ${interaction.guild.name} | ${reason}`
             );
 
         await targetMember.send({ embeds: [dmEmbed] }).catch((err) => {
