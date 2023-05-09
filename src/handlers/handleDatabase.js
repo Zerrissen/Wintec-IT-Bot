@@ -1,3 +1,10 @@
+/**-------------------------------------------------------
+ * *                   INFO
+ *   This is the database handler. It manages the connection
+ *   to the database
+ *----------------------------------------------------**/
+
+
 /*------------------ REQUIRES -----------------*/
 const { connect, connection } = require('mongoose');
 /*------------------ END OF REQUIRES -----------------*/
