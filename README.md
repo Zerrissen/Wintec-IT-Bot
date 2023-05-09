@@ -50,6 +50,7 @@ Thie Wintec IT Student server wouldn't be possible without contributions from va
 
 Bot contributers:
 - [@Zerrissen](https://github.com/Zerrissen)
+- [@unicornenjoyer](https://github.com/unicornenjoyer)
 
 Server contributers:
 - [@Zerrissen](https://github.com/Zerrissen)
