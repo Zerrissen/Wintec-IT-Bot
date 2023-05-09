@@ -7,6 +7,7 @@ module.exports = {
         name: 'verify-email',
     },
     async execute(interaction) {
+        // Just check whether the email is pointing to the right domain
         let regex = /[A-Za-z0-9]+@student\.wintec\.ac\.nz/i;
         if (
             !regex.test(
@@ -22,6 +23,8 @@ module.exports = {
             await interaction.reply({ embeds: [embed] });
             return;
         }
+
+        // Regex passed, so we can start verifying
         const embed = new EmbedBuilder()
             .setColor(0x0f4a00)
             .setDescription(
@@ -30,6 +33,7 @@ module.exports = {
 
         await interaction.reply({ embeds: [embed] });
 
+        // We need to generate our verification code and send it to the email address
         let verifCode =
             Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
 
@@ -61,6 +65,7 @@ module.exports = {
         );
         await interaction.editReply({ embeds: [embed] });
 
+        // Now we need to wait for the user to reply with their verification code
         const collectorFilter = (msg) => {
             let regex = /[0-9]/i;
             return msg.author.id === interaction.user.id && regex.test(msg.content);
@@ -72,6 +77,7 @@ module.exports = {
         });
 
         collector.on('collect', (msg) => {
+            // If code is correct, verify them in database and server
             if (msg.content == verifCode) {
                 // Things to update in database
                 const filter = { userId: interaction.member.id };
@@ -96,7 +102,7 @@ module.exports = {
                     (role) => role.name === 'Verified'
                 );
                 interaction.member.roles.add(role);
-            } else {
+            } else { // Lol dumbass you didn't send the right code
                 embed.setDescription(
                     ':x:  Uh oh, wrong code! Please run /verify again to get a new code.'
                 );
@@ -104,10 +110,12 @@ module.exports = {
             }
         });
 
+        // Just in case the collector freaks out, it won't crash the bot
         collector.on('error', (error) => {
             console.error('Message collector error:', error);
         });
 
+        // If the collector times out, then you suck
         collector.on('end', (collected, reason) => {
             if (collected.size == 0) {
                 embed.setDescription(
