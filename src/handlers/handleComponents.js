@@ -1,3 +1,9 @@
+/**-------------------------------------------------------
+ * *                   INFO
+ *   This is the bot component handler. It collects
+ *   all the components and sets their properties
+ *----------------------------------------------------**/
+
 /*------------------ REQUIRES -----------------*/
 const { readdirSync } = require('fs');
 /*------------------ END OF REQUIRES -----------------*/

@@ -1,7 +1,7 @@
 /**-------------------------------------------------------
  * *                   INFO
  *   This is the bot command handler. It collects
- *   all the commands and registers them as interactions.
+ *   all the commands and registers them as interactions. 
  *----------------------------------------------------**/
 
 /*------------------ REQUIRES -----------------*/

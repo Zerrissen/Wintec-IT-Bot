@@ -1,3 +1,10 @@
+/**-------------------------------------------------------
+ * *                   INFO
+ *   This is the bot event handler. It handles events
+ *   emitted by different modules and components while
+ *   the bot is running.
+ *----------------------------------------------------**/
+
 /*------------------ REQUIRES -----------------*/
 const fs = require('node:fs');
 const { connection } = require('mongoose');
