@@ -14,7 +14,7 @@ module.exports = {
 					{ name: 'verify', value: 'get your roles' },
 				)),
 	async execute(interaction) {
-		const category = interaction.options.getString('commands');
+		await interaction.reply.options.getString(<optionName>)
         	ephemeral: true;
 	},
 };
