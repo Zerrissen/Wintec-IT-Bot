@@ -15,7 +15,7 @@ module.exports = {
 				)),
 	async execute(interaction) {
 		const category = interaction.options.getString('commands');
-        ephemeral: true
+        	ephemeral: true;
 	},
 };
 
