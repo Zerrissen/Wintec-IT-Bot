@@ -6,7 +6,7 @@ module.exports = {
     data: {
         name: 'verify-email',
     },
-    async execute(interaction) {
+    async execute(interaction, client) {
         // Just check whether the email is pointing to the right domain
         let regex = /[A-Za-z0-9]+@student\.wintec\.ac\.nz/i;
         if (
@@ -48,7 +48,7 @@ module.exports = {
         });
 
         let details = {
-            from: 'bot@itstudenthelp.com',
+            from: process.env.MAIL_USER,
             to: interaction.fields.getTextInputValue('verifyEmailInput'),
             subject: 'Student Discord Verification Code',
             text: `Thanks for joining our server! Your verification code is: ${verifCode}\nPlease send another message in the #verify channel with your verification code!`,
@@ -102,6 +102,10 @@ module.exports = {
                     (role) => role.name === 'Verified'
                 );
                 interaction.member.roles.add(role);
+
+                // We need to get the user object here to be able to call the send() method
+                const user = client.users.cache.get(interaction.member.user.id);
+                user.send("Howdy! It seems you've just verified in the **Wintec IT Student** server. Great! If you're comfortable, please change your server nickname to your first name so your classmates can help tell you apart!")
             } else { // Lol dumbass you didn't send the right code
                 embed.setDescription(
                     ':x:  Uh oh, wrong code! Please run /verify again to get a new code.'
