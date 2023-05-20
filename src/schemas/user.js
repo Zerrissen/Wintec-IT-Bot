@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const userSchema = new Schema({
     _id: Schema.Types.ObjectId,
     userId: String,
-    userTag: String,
+    userName: String, // Discord is getting rid of the tag system :(
     userVerified: { type: Boolean, required: true },
 });
 
