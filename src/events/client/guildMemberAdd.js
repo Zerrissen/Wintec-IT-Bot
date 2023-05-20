@@ -25,10 +25,10 @@ module.exports = {
             interaction.member.roles.add(role);
             console.log(chalk.green(`[Client] ${member.user.username} verified!`));
 
-            member.send("Howdy! It seems you've rejoined the **Wintec IT Student** server. Welcome back! You don't have to verify again. Also, please don't forget to change your server nickname to your first name!")
-        } else {
+            member.send("Howdy! It seems you've rejoined the **Wintec IT Student** server. Welcome back! You don't have to verify again, just select the Student or Alumni role! Also, please don't forget to change your server nickname to your first name!")
+        }
+        else {
             console.log(chalk.red(`[Client] ${member.user.username} not verified!`));
-            member.send("Welcome to the **Wintec IT Student** server! Please run the /verify command in the server to get access to all the other channels.")
         }
     },
 };
