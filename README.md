@@ -13,6 +13,14 @@ To install and setup this bot yourself, you require the following dependancies:
 > - Node version >20.0.0
 > - npm version >9.6.5
 
+You can then clone the repository
+
+```
+git clone https://github.com/zerrissen/wintec-it-bot
+```
+
+Or download the source directly from the latest release [here](https://github.com/Zerrissen/Wintec-IT-Bot/releases#latest)
+
 You will also have to set up the following environment variables:
 > - "TOKEN" (Bot token)
 > - "MONGO_DB" (MongoDB connection string)
@@ -23,15 +31,7 @@ You will also have to set up the following environment variables:
 
 These variables should be set in a `.env` file in the root file of the repository.
 
-You can then clone the repository
-
-```
-git clone https://github.com/zerrissen/wintec-it-bot
-```
-
-Or download the source directly from the latest release [here](https://github.com/Zerrissen/Wintec-IT-Bot/releases#latest)
-
-open the projects base directory in your terminal and run install the npm packages required:
+Open the projects base directory in your terminal and run install the npm packages required:
 ```
 npm i
 ```
@@ -46,7 +46,7 @@ node .
 Documentation is currently being worked on, sorry for the disappointment! We hope to get this released for you soon.
 
 ## Contributers
-Thie Wintec IT Student server wouldn't be possible without contributions from various people. Many thanks to the following!
+The Wintec IT Student server wouldn't be possible without contributions from various people. Many thanks to the following!
 
 Bot contributers:
 - [@Zerrissen](https://github.com/Zerrissen)
