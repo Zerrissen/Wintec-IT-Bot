@@ -2,24 +2,29 @@
 
 // Import necessary modules from Discord.js library
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const Balance = require("../../schemas/balance");
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('points')
 		.setDescription('Gives the amount of points a user has!')
-    		.addUserOption(option => option.setName('target').setDescription('The users points to see')),
-	async execute(interaction) {
+		.addUserOption(option => option.setName('target').setDescription('The users points to see')),
+	async execute(interaction, client) {
 		const selectedUser = interaction.options.getUser('target') || interaction.user;
-		const storedBalance = await client.getBalance(selectedUser.id)
-		
-		if (!storedBalance) return await interaction.reply({
-			content: `${selectedUser.tag}, doesnt have a balance.`,
-			ephemeral: true
+		const selectedUserId = selectedUser.id;
+
+		const storedBalance = await Balance.findOne({
+			userId: selectedUserId,
 		});
-		else {
-			const embed = new EmbedBuilder()
-				.setTitle(`${selectedUSer.username}'s Balance: `)
-				.addFields([
+
+		if(!storedBalance) return await interaction.reply({
+		content: `${selectedUser.tag}, doesnt have a balance.`,
+		ephemeral: true
+	});
+	else {
+		const embed = new EmbedBuilder()
+			.setTitle(`${selectedUSer.username}'s Balance: `)
+			.addFields([
 				{
 					name: `$${storedBalance.balance}`,
 				}
@@ -28,6 +33,6 @@ module.exports = {
 				embeds: [embed],
 				ephemeral: true,
 			});
-		}
-	},
+	}
+},
 };
