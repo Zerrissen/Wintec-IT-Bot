@@ -6,8 +6,8 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('points')
-		.setDescription('Gives the amount of points a user has!'),
-    .addUserOption(option => option.setName('target').setDescription('The users points to see')
+		.setDescription('Gives the amount of points a user has!')
+    		.addUserOption(option => option.setName('target').setDescription('The users points to see'),
 	async execute(interaction) {
 		const selectedUser = interaction.options.getUser('target') || interaction.user;
 		const storedBalance = await client.getBalance(selectedUser.id)
