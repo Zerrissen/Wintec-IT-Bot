@@ -5,7 +5,7 @@ module.exports = (client) => {
   client.getBalance = async (userID) => {
 	  data: {
 		name:'fetchbalance',
-	}
+	},
     const storedBalance = await Balance.findOne({
 		userId: userID,
     });
