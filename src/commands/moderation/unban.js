@@ -42,7 +42,7 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor(0x0f4a00)
             .setDescription(
-                `:white_check_mark:  Woohoo! ${target.tag} has been **unbanned**`
+                `:white_check_mark:  Woohoo! @${target.username} has been **unbanned**`
             );
 
         const dmEmbed = new EmbedBuilder()
