@@ -5,4 +5,4 @@ const balanceSchema = new Schema({
     balance: { type: Number, default: 0},
 });
 
-module.exports = model('Balance', userSchema, 'balances');
+module.exports = model('Balance', balanceSchema, 'balances');
