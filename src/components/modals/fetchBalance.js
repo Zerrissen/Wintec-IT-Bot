@@ -4,7 +4,7 @@ const { Types } = require("mongoose");
 module.exports = (client) => {
 	data: {
 		name:'fetchbalance',
-	}
+	},
   client.fetchBalance = async (userID) => {
     let storedBalance = await Balance.findOne({
       userId: userID,
