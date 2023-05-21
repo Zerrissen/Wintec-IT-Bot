@@ -23,6 +23,7 @@ module.exports = {
 				{
 					name: `$${storedBalance.balance}`,
 				}
+			])
 			await interaction.reply({
 				embeds: [embed],
 				ephemeral: true,
