@@ -30,10 +30,6 @@ module.exports = {
             return;
         }
 
-        // if (reaction.users === reaction.message.author) {
-        //     return;
-        // }
-
         const filter = {
             userId: reaction.message.author.id,
         };

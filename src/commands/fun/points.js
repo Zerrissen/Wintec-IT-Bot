@@ -33,19 +33,8 @@ module.exports = {
             );
             const totalPointsToNextLevel =
                 10 * (Math.pow(2, parseInt(userLevel)) - 1);
+
             const reqXp = String(totalPointsToNextLevel - userPoints);
-            const filledChar = '▰';
-            const emptyChar = '▱';
-
-            // Calculate the number of filled and empty characters
-            const filledCount = Math.floor(
-                (userPoints / totalPointsToNextLevel) * 25
-            );
-            const emptyCount = 25 - filledCount;
-
-            // Generate the level bar string
-            const levelBar =
-                filledChar.repeat(filledCount) + emptyChar.repeat(emptyCount);
 
             const embed = new EmbedBuilder()
                 .setTitle(`${selectedUser.username}'s Profile`)
@@ -66,13 +55,8 @@ module.exports = {
                         inline: true,
                     },
                     {
-                        name: 'Required Points To Next Level',
-                        value: reqXp,
-                        inline: false,
-                    },
-                    {
-                        name: 'Level Bar',
-                        value: levelBar,
+                        name: 'Remaining Points To Next Level',
+                        value: `${reqXp}`,
                         inline: false,
                     }
                 )
