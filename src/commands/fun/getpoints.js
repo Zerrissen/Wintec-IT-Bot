@@ -17,22 +17,22 @@ module.exports = {
 			userId: selectedUserId,
 		});
 
-		if(!storedBalance) return await interaction.reply({
-		content: `${selectedUser.tag}, doesnt have a balance.`,
-		ephemeral: true
-	});
-	else {
-		const embed = new EmbedBuilder()
-			.setTitle(`${selectedUSer.username}'s Balance: `)
-			.addFields([
-				{
-					name: `$${storedBalance.balance}`,
-				}
-			])
+		if (!storedBalance) return await interaction.reply({
+			content: `${selectedUser.tag}, doesnt have a balance.`,
+			ephemeral: true
+		});
+		else {
+			const embed = new EmbedBuilder()
+				.setTitle(`${selectedUSer.username}'s Balance: `)
+				.addFields([
+					{
+						name: `$${storedBalance.balance}`,
+					}
+				])
 			await interaction.reply({
 				embeds: [embed],
 				ephemeral: true,
 			});
-	}
-},
+		}
+	},
 };
