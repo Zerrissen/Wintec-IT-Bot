@@ -24,6 +24,7 @@ Or download the source directly from the latest release [here](https://github.co
 You will also have to set up the following environment variables:
 > - "TOKEN" (Bot token)
 > - "MONGO_DB" (MongoDB connection string)
+> - "DB_NAME" (name of the actual database)
 > - "CLIENT_ID" (Bot user ID)
 > - "GUILD_ID" (Server ID)
 > - "MAIL_USER" (Email address for the bot. We use Zoho mail)
