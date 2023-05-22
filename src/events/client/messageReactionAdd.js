@@ -34,7 +34,6 @@ module.exports = {
         //     return;
         // }
 
-        console.log(reaction.author);
         const filter = {
             userId: reaction.message.author.id,
         };
