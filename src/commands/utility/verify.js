@@ -22,7 +22,7 @@ module.exports = {
         const filter = { userId: interaction.member.id };
         const update = {
             userId: interaction.member.id,
-            userTag: interaction.user.tag,
+            userName: interaction.user.username,
             userVerified: interaction.member.roles.cache.some(
                 (roleCheck) => roleCheck.name === 'Verified'
             ),
@@ -43,7 +43,7 @@ module.exports = {
             const embed = new EmbedBuilder()
                 .setColor(0x0f4a00)
                 .setDescription(
-                    `:white_check_mark:  User tag: ${userProfile.userTag} already verified!`
+                    `:white_check_mark:  User: @${userProfile.userName} already verified!`
                 );
 
             await interaction.reply({ embeds: [embed] });

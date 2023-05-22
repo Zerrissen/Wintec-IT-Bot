@@ -16,7 +16,7 @@ module.exports = {
                 await command.execute(interaction, client);
                 console.log(
                     chalk.green(
-                        `[Command] "${commandName}" executed by ${interaction.user.tag}`
+                        `[Command] "${commandName}" executed by @${interaction.user.username}`
                     )
                 );
             } catch (error) {
