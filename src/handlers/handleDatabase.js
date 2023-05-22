@@ -23,7 +23,7 @@ module.exports = async (client) => {
             await connect(process.env.MONGO_DB, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
-                dbName: 'Bot-Prod',
+                dbName: process.env.DB_NAME
             });
         } catch (error) {
             console.error(error);
