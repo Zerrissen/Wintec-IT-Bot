@@ -5,7 +5,7 @@ const { Events } = require('discord.js');
 const Balance = require('../../schemas/balance');
 
 module.exports = {
-    name: Events.MessageReactionAdd,
+    name: Events.MessageReactionRemove,
     async execute(reaction) {
         if (reaction.partial) {
             // If the message this reaction belongs to was removed, the fetching might result in an API error which should be handled
@@ -35,18 +35,13 @@ module.exports = {
         };
 
         // Init balance if doesn't already exist, also allows us to add to previous balance.
-        const storedBalance = await Balance.findOneAndUpdate(
-            filter,
-            storedUpdate,
-            {
-                upsert: true,
-                new: true,
-            }
+        const storedBalance = await Balance.findOne(
+            filter
         );
 
         const update = {
             userId: reaction.message.author.id,
-            balance: storedBalance.balance + 1,
+            balance: storedBalance.balance - 1,
         };
 
         let userBalance = await Balance.findOneAndUpdate(filter, update, {
