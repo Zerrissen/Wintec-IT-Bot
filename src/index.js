@@ -14,7 +14,7 @@ const { Client, Collection, GatewayIntentBits, Partials } = require('discord.js'
 //! DANGER ZONE! DON'T SET THIS IN CLEARTEXT HERE. USE A .ENV FILE.
 const token = process.env.TOKEN;
 //* Client intents are declared to specify what permissions the client requires to run.
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildPresences], partials: [Partials.Message, Partials.Channel, Partials.Reaction] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences], partials: [Partials.Message, Partials.Channel, Partials.Reaction] });
 
 //* Collections and array are used to store all the client interactions/commands
 client.modals = new Collection();
