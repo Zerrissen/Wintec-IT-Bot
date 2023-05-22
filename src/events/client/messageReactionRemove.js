@@ -6,7 +6,7 @@ const Balance = require('../../schemas/balance');
 
 module.exports = {
     name: Events.MessageReactionRemove,
-    async execute(reaction) {
+    async execute(reaction, user) {
         if (reaction.partial) {
             // If the message this reaction belongs to was removed, the fetching might result in an API error which should be handled
             try {
@@ -23,6 +23,10 @@ module.exports = {
 
         // We only care about the wizard emoji for wizard points :)
         if (!reaction.emoji.name === 'wizard') {
+            return;
+        }
+
+        if (reaction.message.author.id === user.id) {
             return;
         }
 

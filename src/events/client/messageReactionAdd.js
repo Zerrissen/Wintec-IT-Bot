@@ -6,7 +6,7 @@ const Balance = require('../../schemas/balance');
 
 module.exports = {
     name: Events.MessageReactionAdd,
-    async execute(reaction) {
+    async execute(reaction, user) {
         if (reaction.partial) {
             // If the message this reaction belongs to was removed, the fetching might result in an API error which should be handled
             try {
@@ -26,6 +26,15 @@ module.exports = {
             return;
         }
 
+        if (reaction.message.author.id === user.id) {
+            return;
+        }
+
+        // if (reaction.users === reaction.message.author) {
+        //     return;
+        // }
+
+        console.log(reaction.author);
         const filter = {
             userId: reaction.message.author.id,
         };
