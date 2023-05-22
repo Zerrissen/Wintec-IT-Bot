@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\commands",
+    "\\src\\commands\\fun",
+    "\\src\\components",
+    "\\src\\events",
+    "\\src\\events\\client",
+    "\\src\\events\\mongo",
+    "\\src\\handlers",
+    "\\src\\schemas"
+  ],
+  "PreviewInSolutionExplorer": false
+}
