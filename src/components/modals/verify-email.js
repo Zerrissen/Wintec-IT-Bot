@@ -86,9 +86,7 @@ module.exports = {
                 const update = {
                     userId: interaction.member.id,
                     userTag: interaction.user.tag,
-                    userVerified: interaction.member.roles.cache.some(
-                        (role) => role.name === 'Verified'
-                    ),
+                    userVerified: true,
                 };
                 let userProfile = User.findOneAndUpdate(filter, update, {
                     upsert: true,
