@@ -3,7 +3,8 @@ const chalk = require('chalk');
 
 module.exports = {
     name: Events.GuildMemberUpdate,
-    async execute(oldMember, member) { //! Yes, oldMember is needed. Don't remove it.
+    async execute(oldMember, member) {
+        //! Yes, oldMember is needed. Don't remove it.
         console.log(
             chalk.cyan(
                 `[Client] @${member.user.username} updated, checking for Student/Alumni..`
@@ -23,7 +24,12 @@ module.exports = {
             );
             member.send(
                 "Hi! You've registered yourself as a Wintec student/alumni. Please run the /verify command in the #verify channel to get access to all the other student channels."
-            );
+            )
+                .catch((error) => {
+                    console.log(
+                        `user ${member.user.username} cannot be messaged. Not DMing!`
+                    );
+                });
         } else {
             console.log(
                 chalk.green(`[Client] @${member.user.username} is visitor`)
