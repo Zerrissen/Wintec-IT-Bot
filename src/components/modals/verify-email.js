@@ -68,7 +68,9 @@ module.exports = {
         // Now we need to wait for the user to reply with their verification code
         const collectorFilter = (msg) => {
             let regex = /[0-9]/i;
-            return msg.author.id === interaction.user.id && regex.test(msg.content);
+            return (
+                msg.author.id === interaction.user.id && regex.test(msg.content)
+            );
         };
         const collector = interaction.channel.createMessageCollector({
             filter: collectorFilter,
@@ -94,7 +96,9 @@ module.exports = {
                 });
 
                 // Send embed
-                embed.setDescription(':white_check_mark:  Beep boop, you have been verified!');
+                embed.setDescription(
+                    ':white_check_mark:  Beep boop, you have been verified!'
+                );
                 interaction.followUp({ embeds: [embed] });
 
                 // Add role
@@ -105,8 +109,15 @@ module.exports = {
 
                 // We need to get the user object here to be able to call the send() method
                 const user = client.users.cache.get(interaction.member.user.id);
-                user.send("Howdy! It seems you've just verified in the **Wintec IT Student** server. Great! If you're comfortable, please change your server nickname to your first name so your classmates can help tell you apart!")
-            } else { // Lol dumbass you didn't send the right code
+                user.send(
+                    "Howdy! It seems you've just verified in the **Wintec IT Student** server. Great! If you're comfortable, please change your server nickname to your first name so your classmates can help tell you apart!"
+                ).catch((error) => {
+                    console.log(
+                        `user ${member.user.username} cannot be messaged. Not DMing!`
+                    );
+                });
+            } else {
+                // Lol dumbass you didn't send the right code
                 embed.setDescription(
                     ':x:  Uh oh, wrong code! Please run /verify again to get a new code.'
                 );
