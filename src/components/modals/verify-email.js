@@ -113,7 +113,7 @@ module.exports = {
                     "Howdy! It seems you've just verified in the **Wintec IT Student** server. Great! If you're comfortable, please change your server nickname to your first name so your classmates can help tell you apart!"
                 ).catch((error) => {
                     console.log(
-                        `user ${member.user.username} cannot be messaged. Not DMing!`
+                        `user ${user.username} cannot be messaged. Not DMing!`
                     );
                 });
             } else {
