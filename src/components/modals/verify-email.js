@@ -96,7 +96,6 @@ module.exports = {
                     upsert: true,
                     new: true,
                 });
-                console.log(userProfile.userVerified);
 
                 // Send embed
                 embed.setDescription(
