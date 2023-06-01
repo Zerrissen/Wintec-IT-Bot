@@ -8,9 +8,13 @@ module.exports = {
     },
     async execute(interaction, client) {
         // Just check whether the email is pointing to the right domain
-        let regex = /[A-Za-z0-9]+@student\.wintec\.ac\.nz/i;
+        let studentRegex = /[A-Za-z0-9]+@student\.wintec\.ac\.nz/i;
+        let staffRegex = /[A-Za-z].[A-Za-z]+@.wintec\.ac\.nz/i;
         if (
-            !regex.test(
+            !studentRegex.test(
+                interaction.fields.getTextInputValue('verifyEmailInput')
+            ) ||
+            !staffRegex.test(
                 interaction.fields.getTextInputValue('verifyEmailInput')
             )
         ) {
@@ -85,13 +89,14 @@ module.exports = {
                 const filter = { userId: interaction.member.id };
                 const update = {
                     userId: interaction.member.id,
-                    userTag: interaction.user.tag,
+                    userName: interaction.user.username,
                     userVerified: true,
                 };
                 let userProfile = User.findOneAndUpdate(filter, update, {
                     upsert: true,
                     new: true,
                 });
+                console.log(userProfile.userVerified);
 
                 // Send embed
                 embed.setDescription(
@@ -104,6 +109,16 @@ module.exports = {
                     (role) => role.name === 'Verified'
                 );
                 interaction.member.roles.add(role);
+
+                // If staff member, give Wintec Staff role
+                if (staffRegex.test(
+                    interaction.fields.getTextInputValue('verifyEmailInput')
+                )) {
+                    const role = interaction.member.guild.roles.cache.find(
+                        (role) => role.name === 'Wintec Staff'
+                    );
+                    interaction.member.roles.add(role);
+                }
 
                 // We need to get the user object here to be able to call the send() method
                 const user = client.users.cache.get(interaction.member.user.id);
