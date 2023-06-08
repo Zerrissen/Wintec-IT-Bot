@@ -22,12 +22,16 @@ module.exports = {
             console.log(
                 chalk.red(`[Client] @${member.user.username} not verified!`)
             );
-            member.send(
-                "Hi! You've registered yourself as a Wintec student/alumni. Please run the /verify command in the #verify channel to get access to all the other student channels."
-            )
+            member
+                .send(
+                    "Hi! You've registered yourself as a Wintec student/alumni. Please run the /verify command in the #verify channel to get access to all the other student channels."
+                )
+                // Use the following catch for every time we call member.send. Unfortunately no other way around this. See https://discordjs.guide/popular-topics/errors.html#cannot-send-messages-to-this-user
                 .catch((error) => {
                     console.log(
-                        `user ${member.user.username} cannot be messaged. Not DMing!`
+                        chalk.red(
+                            `[API] ${member.user.username} cannot be messaged. Not DMing! Error code: ${error.code}`
+                        )
                     );
                 });
         } else {

@@ -111,11 +111,14 @@ module.exports = {
                 const user = client.users.cache.get(interaction.member.user.id);
                 user.send(
                     "Howdy! It seems you've just verified in the **Wintec IT Student** server. Great! If you're comfortable, please change your server nickname to your first name so your classmates can help tell you apart!"
-                ).catch((error) => {
-                    console.log(
-                        `user ${user.username} cannot be messaged. Not DMing!`
-                    );
-                });
+                ) // Use the following catch for every time we call member.send. Unfortunately no other way around this. See https://discordjs.guide/popular-topics/errors.html#cannot-send-messages-to-this-user
+                    .catch((error) => {
+                        console.log(
+                            chalk.red(
+                                `[API] ${member.user.username} cannot be messaged. Not DMing! Error code: ${error.code}`
+                            )
+                        );
+                    });
             } else {
                 // Lol dumbass you didn't send the right code
                 embed.setDescription(
