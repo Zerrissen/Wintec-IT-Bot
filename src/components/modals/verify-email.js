@@ -19,9 +19,9 @@ module.exports = {
             )
         ) {
             const embed = new EmbedBuilder()
-                .setColor(0x0f4a00)
+                .setColor(0x9c0b0b)
                 .setDescription(
-                    ':x:  Please provide a student wintec email address, or contact a moderator.'
+                    ':x:  Please provide a valid wintec email address, or contact a moderator.'
                 );
 
             await interaction.reply({ embeds: [embed] });
@@ -138,6 +138,7 @@ module.exports = {
                 embed.setDescription(
                     ':x:  Uh oh, wrong code! Please run /verify again to get a new code.'
                 );
+                embed.setColor(0x9c0b0b)
                 interaction.followUp({ embeds: [embed] });
             }
         });
@@ -153,6 +154,7 @@ module.exports = {
                 embed.setDescription(
                     ':x:  No code detected. Code expired. Run /verify again to get a new code.'
                 );
+                embed.setColor(0x9c0b0b)
                 interaction.followUp({ embeds: [embed] });
             }
         });
