@@ -110,9 +110,11 @@ module.exports = {
                 interaction.member.roles.add(role);
 
                 // If staff member, give Wintec Staff role
-                if (staffRegex.test(
-                    interaction.fields.getTextInputValue('verifyEmailInput')
-                )) {
+                if (
+                    staffRegex.test(
+                        interaction.fields.getTextInputValue('verifyEmailInput')
+                    )
+                ) {
                     const role = interaction.member.guild.roles.cache.find(
                         (role) => role.name === 'Wintec Staff'
                     );
