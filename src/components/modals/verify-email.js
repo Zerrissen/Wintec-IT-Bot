@@ -8,8 +8,8 @@ module.exports = {
     },
     async execute(interaction, client) {
         // Just check whether the email is pointing to the right domain
-        let studentRegex = /[A-Za-z0-9]+@student\.wintec\.ac\.nz/i;
-        let staffRegex = /[A-Za-z].[A-Za-z]+@.wintec\.ac\.nz/i;
+        let studentRegex = /^[a-zA-Z]{6}\d{2}@student\.wintec\.ac\.nz$/i;
+        let staffRegex = /^[a-zA-Z]+\.[a-zA-Z]+@wintec\.ac\.nz$/i;
         if (
             !studentRegex.test(
                 interaction.fields.getTextInputValue('verifyEmailInput')
