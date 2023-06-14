@@ -51,9 +51,16 @@ module.exports = {
                 `:white_check_mark:  Woohoo! You have been unbanned from ${interaction.guild.name}`
             );
 
-        await targetMember.send({ embeds: [dmEmbed] }).catch((err) => {
-            return;
-        });
+        await targetMember
+            .send({ embeds: [dmEmbed] })
+            // Use the following catch for every time we call member.send. Unfortunately no other way around this. See https://discordjs.guide/popular-topics/errors.html#cannot-send-messages-to-this-user
+            .catch((error) => {
+                console.log(
+                    chalk.red(
+                        `[API] ${member.user.username} cannot be messaged. Not DMing! Error code: ${error.code}`
+                    )
+                );
+            });
 
         await interaction.reply({ embeds: [embed] });
     },

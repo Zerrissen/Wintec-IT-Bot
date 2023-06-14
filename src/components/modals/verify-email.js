@@ -8,16 +8,20 @@ module.exports = {
     },
     async execute(interaction, client) {
         // Just check whether the email is pointing to the right domain
-        let regex = /[A-Za-z0-9]+@student\.wintec\.ac\.nz/i;
+        let studentRegex = /[A-Za-z0-9]+@student\.wintec\.ac\.nz/i;
+        let staffRegex = /[A-Za-z].[A-Za-z]+@.wintec\.ac\.nz/i;
         if (
-            !regex.test(
+            !studentRegex.test(
+                interaction.fields.getTextInputValue('verifyEmailInput')
+            ) ||
+            !staffRegex.test(
                 interaction.fields.getTextInputValue('verifyEmailInput')
             )
         ) {
             const embed = new EmbedBuilder()
-                .setColor(0x0f4a00)
+                .setColor(0x9c0b0b)
                 .setDescription(
-                    ':x:  Please provide a student wintec email address, or contact a moderator.'
+                    ':x:  Please provide a valid wintec email address, or contact a moderator.'
                 );
 
             await interaction.reply({ embeds: [embed] });
@@ -85,10 +89,8 @@ module.exports = {
                 const filter = { userId: interaction.member.id };
                 const update = {
                     userId: interaction.member.id,
-                    userTag: interaction.user.tag,
-                    userVerified: interaction.member.roles.cache.some(
-                        (role) => role.name === 'Verified'
-                    ),
+                    userName: interaction.user.username,
+                    userVerified: true,
                 };
                 let userProfile = User.findOneAndUpdate(filter, update, {
                     upsert: true,
@@ -107,20 +109,36 @@ module.exports = {
                 );
                 interaction.member.roles.add(role);
 
+                // If staff member, give Wintec Staff role
+                if (
+                    staffRegex.test(
+                        interaction.fields.getTextInputValue('verifyEmailInput')
+                    )
+                ) {
+                    const role = interaction.member.guild.roles.cache.find(
+                        (role) => role.name === 'Wintec Staff'
+                    );
+                    interaction.member.roles.add(role);
+                }
+
                 // We need to get the user object here to be able to call the send() method
                 const user = client.users.cache.get(interaction.member.user.id);
                 user.send(
                     "Howdy! It seems you've just verified in the **Wintec IT Student** server. Great! If you're comfortable, please change your server nickname to your first name so your classmates can help tell you apart!"
-                ).catch((error) => {
-                    console.log(
-                        `user ${user.username} cannot be messaged. Not DMing!`
-                    );
-                });
+                ) // Use the following catch for every time we call member.send. Unfortunately no other way around this. See https://discordjs.guide/popular-topics/errors.html#cannot-send-messages-to-this-user
+                    .catch((error) => {
+                        console.log(
+                            chalk.red(
+                                `[API] ${member.user.username} cannot be messaged. Not DMing! Error code: ${error.code}`
+                            )
+                        );
+                    });
             } else {
                 // Lol dumbass you didn't send the right code
                 embed.setDescription(
                     ':x:  Uh oh, wrong code! Please run /verify again to get a new code.'
                 );
+                embed.setColor(0x9c0b0b)
                 interaction.followUp({ embeds: [embed] });
             }
         });
@@ -136,6 +154,7 @@ module.exports = {
                 embed.setDescription(
                     ':x:  No code detected. Code expired. Run /verify again to get a new code.'
                 );
+                embed.setColor(0x9c0b0b)
                 interaction.followUp({ embeds: [embed] });
             }
         });
