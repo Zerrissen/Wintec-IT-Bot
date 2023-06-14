@@ -13,7 +13,7 @@ module.exports = {
         if (
             !studentRegex.test(
                 interaction.fields.getTextInputValue('verifyEmailInput')
-            ) ||
+            ) &&
             !staffRegex.test(
                 interaction.fields.getTextInputValue('verifyEmailInput')
             )
