@@ -9,7 +9,7 @@ module.exports = {
     async execute(interaction, client) {
         // Just check whether the email is pointing to the right domain
         let studentRegex = /^[a-zA-Z]{6}\d{2}@student\.wintec\.ac\.nz$/i;
-        let studentOldRegex = /^\d{6}00@student\.wintec\.ac\.nz$/i;
+        let studentOldRegex = /^0\d{7}@student\.wintec\.ac\.nz$/i;
         let staffRegex = /^[a-zA-Z]+\.[a-zA-Z]+@wintec\.ac\.nz$/i;
         if (
             !studentRegex.test(
