@@ -3,3 +3,4 @@ node_modules/
 .prettierrc
 jsconfig.json
 /.vs/slnx.sqlite
+.vs/
