@@ -33,7 +33,7 @@ module.exports = {
                                     
                                 )
                             );
-                            counter++;
+                            
                         });
 
                     const memberName = member?.user?.username || 'Unknown User';
@@ -42,9 +42,9 @@ module.exports = {
                             name: `#${String(counter)} @${memberName}`,
                             value: `${String(record.balance)} points`,
                         });
-                        counter++;
+                        
                     }
-                    
+                    counter++;
                 }
 
 
