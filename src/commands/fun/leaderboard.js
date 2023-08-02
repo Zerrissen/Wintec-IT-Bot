@@ -39,7 +39,7 @@ module.exports = {
                     const memberName = member?.user?.username || 'Unknown User';
                     if (memberName != 'Unknown User') {
                         embed.addFields({
-                            name: `#${String(position)} @${memberName}`,
+                            name: `#${String(counter)} @${memberName}`,
                             value: `${String(record.balance)} points`,
                         });
                         counter++;
