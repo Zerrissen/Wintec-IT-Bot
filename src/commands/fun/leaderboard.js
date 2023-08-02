@@ -24,7 +24,7 @@ module.exports = {
                     let record = leaderboard[counter]
                     console.log("leadercounter" + leaderboard[counter])
                     console.log("\nrecord.userId" + record.userId)
-                    // const member = await interaction.guild.members
+                    const member = await interaction.guild.members
                     //     .fetch(record.userId)
                     //     .catch((error) => {
                     //         console.log(
