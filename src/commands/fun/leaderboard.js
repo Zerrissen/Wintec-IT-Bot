@@ -33,6 +33,7 @@ module.exports = {
                                     
                                 )
                             );
+                            counter++;
                         });
 
                     const memberName = member?.user?.username || 'Unknown User';
