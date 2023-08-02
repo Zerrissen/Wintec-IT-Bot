@@ -23,7 +23,7 @@ module.exports = {
                 while (counter <= 10) {
                     let record = leaderboard[counter]
                     console.log("leadercounter" + leaderboard[counter])
-                    console.log("record" + record)
+                    console.log("record.userId" + record.userId)
                     const member = await interaction.guild.members
                         .fetch(record.userId)
                         .catch((error) => {
