@@ -20,7 +20,7 @@ module.exports = {
                 let counter = 0;
 
               
-                while (counter <= 10 && counter <= leaderboard.length) {
+                while (counter <= 10 && counter < leaderboard.length) {
                     let record = leaderboard[counter]
                     console.log("leadercounter" + leaderboard[counter])
                     console.log("record.userId" + record.userId + "\n")
