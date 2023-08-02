@@ -22,8 +22,8 @@ module.exports = {
               
                 while (counter <= 10 && counter < leaderboard.length) {
                     let record = leaderboard[counter]
-                    console.log("leadercounter" + leaderboard[counter])
-                    console.log("record.userId" + record.userId + "\n")
+                    // console.log("leadercounter" + leaderboard[counter])
+                    // console.log("record.userId" + record.userId + "\n")
                     const member = await interaction.guild.members
                         .fetch(record.userId)
                         .catch((error) => {
@@ -38,8 +38,9 @@ module.exports = {
 
                     const memberName = member?.user?.username || 'Unknown User';
                     if (memberName != 'Unknown User') {
+                        position++;
                         embed.addFields({
-                            name: `#${String(counter)} @${memberName}`,
+                            name: `#${String(position)} @${memberName}`,
                             value: `${String(record.balance)} points`,
                         });
                         
