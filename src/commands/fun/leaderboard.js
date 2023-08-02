@@ -20,15 +20,15 @@ module.exports = {
                 let counter = 0;
 
                 while (counter <= 10) {
-                    // const member = await interaction.guild.members
-                    //     .fetch(record.userId)
-                    //     .catch((error) => {
-                    //         console.log(
-                    //             chalk.red(
-                    //                 `[API] Cannot fetch user ID ${record.userID}! No longer in server. Error code: ${error.code}`
-                    //             )
-                    //         );
-                    //     });
+                    const member = await interaction.guild.members
+                        .fetch(record.userId)
+                        .catch((error) => {
+                            console.log(
+                                chalk.red(
+                                    `[API] Cannot fetch user ID ${record.userID}! No longer in server. Error code: ${error.code}`
+                                )
+                            );
+                        });
 
                     const memberName = member?.user?.username || 'Unknown User';
                     if (memberName != 'Unknown User') {
