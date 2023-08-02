@@ -35,8 +35,8 @@ module.exports = {
                             name: `#${String(position)} @${memberName}`,
                             value: `${String(record.balance)} points`,
                         });
+                        position++;
                     }
-                    position++;
                 }
 
                 interaction.reply({ embeds: [embed] });
