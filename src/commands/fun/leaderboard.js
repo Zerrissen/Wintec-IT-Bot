@@ -19,33 +19,33 @@ module.exports = {
                 let position = 0;
                 let counter = 0;
 
-                console.log(leaderboard[1]);
-                console.log(leaderboard[1][2]);
-                
+              
+                while (counter <= 10) {
+                    let record = leaderboard[counter]
+                    console.log("leadercounter" + leaderboard[counter])
+                    console.log("record" + record)
+                    const member = await interaction.guild.members
+                        .fetch(record.userId)
+                        .catch((error) => {
+                            console.log(
+                                chalk.red(
+                                    `[API] Cannot fetch user ID ${record.userID}! No longer in server. Error code: ${error.code}`
+                                )
+                            );
+                        });
 
-                // while (counter <= 10) {
-                //     const member = await interaction.guild.members
-                //         .fetch(leaderboard.userId)
-                //         .catch((error) => {
-                //             console.log(
-                //                 chalk.red(
-                //                     `[API] Cannot fetch user ID ${record.userID}! No longer in server. Error code: ${error.code}`
-                //                 )
-                //             );
-                //         });
-
-                //     const memberName = member?.user?.username || 'Unknown User';
-                //     if (memberName != 'Unknown User') {
-                //         embed.addFields({
-                //             name: `#${String(position)} @${memberName}`,
-                //             value: `${String(record.balance)} points`,
-                //         });
-                //         counter++;
-                //     }
-                // }
+                    const memberName = member?.user?.username || 'Unknown User';
+                    if (memberName != 'Unknown User') {
+                        embed.addFields({
+                            name: `#${String(position)} @${memberName}`,
+                            value: `${String(record.balance)} points`,
+                        });
+                        counter++;
+                    }
+                }
 
 
-                // interaction.reply({ embeds: [embed] });
+                interaction.reply({ embeds: [embed] });
                 
             });
     },
