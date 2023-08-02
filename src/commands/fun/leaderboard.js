@@ -20,6 +20,7 @@ module.exports = {
                 let counter = 0;
 
                 console.log(leaderboard[1]);
+                console.log(leaderboard[1][2]);
                 
 
                 // while (counter <= 10) {
