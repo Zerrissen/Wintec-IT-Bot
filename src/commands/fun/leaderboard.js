@@ -19,7 +19,8 @@ module.exports = {
                 let position = 0;
                 let counter = 0;
 
-                console.log(leaderboard);
+                console.log(leaderboard[1]);
+                
 
                 // while (counter <= 10) {
                 //     const member = await interaction.guild.members
