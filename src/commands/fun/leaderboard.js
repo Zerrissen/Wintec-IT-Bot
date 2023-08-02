@@ -21,7 +21,7 @@ module.exports = {
 
                 while (counter <= 10) {
                     const member = await interaction.guild.members
-                        .fetch(record.userId)
+                        .fetch(leaderboard.record.userId)
                         .catch((error) => {
                             console.log(
                                 chalk.red(
