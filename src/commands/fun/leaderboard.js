@@ -30,8 +30,10 @@ module.exports = {
                             console.log(
                                 chalk.red(
                                     `[API] Cannot fetch user ID ${record.userID}! No longer in server. Error code: ${error.code}`
+                                    
                                 )
                             );
+                            counter++; //remove later
                         });
 
                     const memberName = member?.user?.username || 'Unknown User';
