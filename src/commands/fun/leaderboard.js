@@ -23,7 +23,7 @@ module.exports = {
                 //counter < leaderboard.length prevents reading past the number of entrees that exist
                 //position <= 10 caps the leaderboard at 10 spots
 
-                while (position <= 10 && counter < leaderboard.length) { //counter < leaderboard.length prevents reading past the number of entrees that exist
+                while (position < 10 && counter < leaderboard.length) { //counter < leaderboard.length prevents reading past the number of entrees that exist
                     let record = leaderboard[counter] //The users information inside the database is stored in variable 'record'
                     const member = await interaction.guild.members
                         .fetch(record.userId) //.fetch grabs the information userId stored inside record to use in output
