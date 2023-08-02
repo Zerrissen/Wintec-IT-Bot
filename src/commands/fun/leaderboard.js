@@ -44,6 +44,7 @@ module.exports = {
                         });
                         counter++;
                     }
+                    counter++;
                 }
 
 
