@@ -20,21 +20,20 @@ module.exports = {
                 let counter = 0;
 
               
-                while (counter <= 10) {
+                while (counter <= 10 && counter <= leaderboard.length) {
                     let record = leaderboard[counter]
                     console.log("leadercounter" + leaderboard[counter])
-                    console.log("\nrecord.userId" + record.userId)
+                    console.log("record.userId" + record.userId + "\n")
                     const member = await interaction.guild.members
-                    //     .fetch(record.userId)
-                    //     .catch((error) => {
-                    //         console.log(
-                    //             chalk.red(
-                    //                 `[API] Cannot fetch user ID ${record.userID}! No longer in server. Error code: ${error.code}`
+                        .fetch(record.userId)
+                        .catch((error) => {
+                            console.log(
+                                chalk.red(
+                                    `[API] Cannot fetch user ID ${record.userID}! No longer in server. Error code: ${error.code}`
                                     
-                    //             )
-                    //         );
-                    //         counter++; //remove later
-                    //     });
+                                )
+                            );
+                        });
 
                     const memberName = member?.user?.username || 'Unknown User';
                     if (memberName != 'Unknown User') {
@@ -44,7 +43,7 @@ module.exports = {
                         });
                         counter++;
                     }
-                    counter++;
+                    
                 }
 
 
