@@ -3,6 +3,7 @@
 
 const { Events } = require('discord.js');
 const Balance = require('../../schemas/balance');
+const wizard = client.emojis.cache.find(emoji => emoji.name === "wizard");
 
 module.exports = {
     name: Events.MessageReactionAdd,
@@ -21,9 +22,15 @@ module.exports = {
             }
         }
 
+        console.log(reaction.emoji.name);
+        console.log(reaction.emoji);
+        console.log(reaction);
+
+        
+
         // We only care about the wizard emoji for wizard points :)
-        if (!reaction.emoji.name === 'wizard') {
-            console.log("test")
+        if (!reaction.emoji.name === wizard) {
+            console.log("if statement matched wizard and returned")
             return;
         }
 
