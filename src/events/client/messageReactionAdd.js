@@ -4,6 +4,7 @@
 const { Events } = require('discord.js');
 const Balance = require('../../schemas/balance');
 
+
 module.exports = {
     name: Events.MessageReactionAdd,
     async execute(reaction, user) {
@@ -22,7 +23,8 @@ module.exports = {
         }
 
         // We only care about the wizard emoji for wizard points :)
-        if (!reaction.emoji.name === 'wizard') {
+        //"1110053475309592636" is wizard emoji id
+        if (reaction.emoji.id != "1110053475309592636") {
             return;
         }
 
