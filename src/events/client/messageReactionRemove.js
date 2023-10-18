@@ -22,6 +22,7 @@ module.exports = {
         }
 
         // We only care about the wizard emoji for wizard points :)
+
         if (reaction.emoji.name != 'wizard') {
             return;
         }
