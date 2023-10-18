@@ -3,6 +3,8 @@
 
 const { Events } = require('discord.js');
 const Balance = require('../../schemas/balance');
+const Discord = require('discord.js');
+const client = new Discord.Client();
 const wizard = client.emojis.cache.find(emoji => emoji.name === "wizard");
 
 module.exports = {
