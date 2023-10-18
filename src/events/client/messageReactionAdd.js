@@ -32,7 +32,7 @@ module.exports = {
         
 
         // We only care about the wizard emoji for wizard points :)
-        if (!reaction.emoji.id === "1110053475309592636") {
+        if (reaction.emoji.id != "1110053475309592636") {
             console.log("if statement didnt match wizard and returned")
             return;
         }
