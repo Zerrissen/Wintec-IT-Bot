@@ -22,15 +22,18 @@ module.exports = {
             }
         }
 
-        console.log(reaction.emoji.name);
-        console.log(reaction.emoji);
-        console.log(reaction);
-
+        console.log("Name " + reaction.emoji.name);
+        console.log("ID " + reaction.emoji.id);
+        
+        if (reaction.emoji.id === "1110053475309592636") {
+            console.log("IDs have matched")
+            
+        }
         
 
         // We only care about the wizard emoji for wizard points :)
-        if (!reaction.emoji.name === wizard.id) {
-            console.log("if statement matched wizard and returned")
+        if (!reaction.emoji.id === "1110053475309592636") {
+            console.log("if statement didnt match wizard and returned")
             return;
         }
 
