@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const axios = require("axios");
+const badWords = require('bad-words');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -41,14 +42,16 @@ module.exports = {
             const { extract, content_urls, thumbnail, originalimage } =
                 summaryResponse.data;
 
+            const filter = new badWords();
+
             const embed = new EmbedBuilder()
                 .setColor(0x0f4a00)
                 .setTitle(title)
                 .setURL(content_urls.desktop.page)
                 .setDescription(extract);
 
-            // Some embeds don't have thumbnails
-            if (thumbnail) {
+            // Some embeds don't have thumbnails. Also, we want at least a *little* bit of filtering just in case.
+            if (thumbnail && !filter.isProfane(query) && !filter.isProfane(title)) {
                 embed.setImage(thumbnail.source);
             }
 
