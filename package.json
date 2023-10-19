@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Zerrissen/Wintec-IT-Bot#readme",
   "dependencies": {
+    "axios": "^1.5.1",
     "chalk": "^4.1.2",
     "discord.js": "^14.9.0",
     "dotenv": "^16.0.3",
