@@ -7,7 +7,7 @@ module.exports = {
     name: Events.MessageCreate,
 
     async execute(message) {
-        if (message.author.username === "tehgoldenwiz." && message.mentions.has(message.client.user)) {
+        if (message.author.username === "tehgoldenwiz" && message.mentions.has(message.client.user)) {
             const now = new Date().toLocaleString("en-NZ", {
                 timeZone: "Pacific/Auckland",
             });
