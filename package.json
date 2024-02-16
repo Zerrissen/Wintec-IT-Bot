@@ -25,5 +25,8 @@
     "mongoose": "^7.6.3",
     "nodemailer": "^6.9.9",
     "ping": "^0.4.4"
+  },
+  "devDependencies": {
+    "prisma": "^5.9.1"
   }
 }

@@ -1,0 +1,21 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url = env("POSTGRES_URL")
+}
+
+// Database for a discord bot, which is for a single server of IT students.
+// The bot will be used to manage the server, and to provide information to the students.
+
+model User {
+    id String @id @default(uuid())
+    discordId String @unique
+    email String
+    verified Boolean @default(false)
+    wizardPoints Int @default(0)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

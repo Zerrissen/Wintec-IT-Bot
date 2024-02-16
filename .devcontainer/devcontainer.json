@@ -12,7 +12,8 @@
 				"esbenp.prettier-vscode",
 				"christian-kohler.npm-intellisense",
 				"humao.rest-client",
-				"GitHub.copilot"
+				"GitHub.copilot",
+				"Prisma.prisma"
 			]
 		}
 	}
