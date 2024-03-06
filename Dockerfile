@@ -3,7 +3,7 @@ FROM node:lts-slim
 ENV USER=wintecitbot
 
 RUN apt update && \
-    apt-get -y install --no-install-recommends iputils-ping && \
+    apt-get -y install --no-install-recommends iputils-ping openssl && \
     apt-get purge -y --auto-remove && \
     rm -rf /var/lib/apt/lists/*
 
@@ -16,9 +16,9 @@ WORKDIR /home/${USER}
 COPY --chown=${USER}:${USER}  . .
 
 RUN rm -rf node_modules && \
-    npm ci --omit=dev
+    npm ci && \
 
 COPY --chown=${USER}:${USER} package*.json ./
 
 # Run the app when the container launches
-CMD ["node", "index.js"]
+CMD ["npm", "run", "start:migrate:prod"]
