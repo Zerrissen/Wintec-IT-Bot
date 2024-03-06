@@ -19,12 +19,12 @@ module.exports = {
       .setColor(0x0f4a00)
       .setDescription(`:arrows_counterclockwise:  **Pinging ${url}...**`);
 
-      await interaction.reply({ embeds: [embed] });
+    await interaction.reply({ embeds: [embed] });
 
-      const res = await ping.promise.probe(url); // Ping the URL using the ping library
-      const responseTime = res.time; // Get the response time from the ping response
+    const res = await ping.promise.probe(url); // Ping the URL using the ping library
+    const responseTime = res.time; // Get the response time from the ping response
 
-      embed.setDescription(`:white_check_mark:  **Ping result for ${url}:**\nResponse time: ${responseTime} ms`);
+    embed.setDescription(`:white_check_mark:  **Ping result for ${url}:**\nResponse time: ${responseTime} ms`);
 
     // Send reply to user with embed object
     await interaction.editReply({ embeds: [embed] });

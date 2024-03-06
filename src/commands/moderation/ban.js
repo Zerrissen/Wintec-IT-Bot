@@ -1,91 +1,64 @@
-const {
-    SlashCommandBuilder,
-    PermissionsBitField,
-    EmbedBuilder,
-} = require('discord.js');
+const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder } = require("discord.js");
 
 module.exports = {
-    data: new SlashCommandBuilder()
-        .setName('ban')
-        .setDescription('Allows a moderator to ban a member from the server.')
-        .addUserOption((option) =>
-            option
-                .setName('user')
-                .setDescription('The user you want to ban')
-                .setRequired(true)
-        ),
-    async execute(interaction) {
-        const target = interaction.options.getUser('user');
-        const targetMember = await interaction.guild.members.fetch(target.id);
+  data: new SlashCommandBuilder()
+    .setName("ban")
+    .setDescription("Allows a moderator to ban a member from the server.")
+    .addUserOption((option) => option.setName("user").setDescription("The user you want to ban").setRequired(true)),
+  async execute(interaction) {
+    const target = interaction.options.getUser("user");
+    const targetMember = await interaction.guild.members.fetch(target.id);
 
-        if (
-            !interaction.member.permissions.has(
-                PermissionsBitField.Flags.BanMembers
-            )
-        ) {
-            return await interaction.reply({
-                content:
-                    'You must have the ban members permission to use this command.',
-            });
-        }
+    if (!interaction.member.permissions.has(PermissionsBitField.Flags.BanMembers)) {
+      return await interaction.reply({
+        content: "You must have the ban members permission to use this command.",
+      });
+    }
 
-        if (interaction.member.id == target.id) {
-            return await interaction.reply({
-                content: 'You cannot ban yourself, doofus!',
-            });
-        }
+    if (interaction.member.id == target.id) {
+      return await interaction.reply({
+        content: "You cannot ban yourself, doofus!",
+      });
+    }
 
-        if (!targetMember) {
-            return await interaction.reply({
-                content: 'The user mentioned does not exist in this server.',
-            });
-        }
+    if (!targetMember) {
+      return await interaction.reply({
+        content: "The user mentioned does not exist in this server.",
+      });
+    }
 
-        if (!targetMember.kickable) {
-            return await interaction.reply({
-                content:
-                    'User cannot be banned out due to them having greater permissions.',
-            });
-        }
+    if (!targetMember.kickable) {
+      return await interaction.reply({
+        content: "User cannot be banned out due to them having greater permissions.",
+      });
+    }
 
-        if (
-            targetMember.permissions.has(
-                PermissionsBitField.Flags.Administrator
-            )
-        ) {
-            return await interaction.reply({
-                content:
-                    'You cannot ban a user with an Administrator role, doofus!',
-            });
-        }
+    if (targetMember.permissions.has(PermissionsBitField.Flags.Administrator)) {
+      return await interaction.reply({
+        content: "You cannot ban a user with an Administrator role, doofus!",
+      });
+    }
 
-        let reason =
-            interaction.options.getString('reason') || 'No reason given.';
+    let reason = interaction.options.getString("reason") || "No reason given.";
 
-        targetMember.ban();
+    targetMember.ban();
 
-        const embed = new EmbedBuilder()
-            .setColor(0x0f4a00)
-            .setDescription(
-                `:white_check_mark:  Wee woo, @${target.username} has been **banned** | ${reason}`
-            );
+    const embed = new EmbedBuilder()
+      .setColor(0x0f4a00)
+      .setDescription(`:white_check_mark:  Wee woo, @${target.username} has been **banned** | ${reason}`);
 
-        const dmEmbed = new EmbedBuilder()
-            .setColor(0x0f4a00)
-            .setDescription(
-                `:white_check_mark:  Wee woo, you have been banned from ${interaction.guild.name}. | ${reason}`
-            );
+    const dmEmbed = new EmbedBuilder()
+      .setColor(0x0f4a00)
+      .setDescription(`:white_check_mark:  Wee woo, you have been banned from ${interaction.guild.name}. | ${reason}`);
 
-        await targetMember
-            .send({ embeds: [dmEmbed] }) // Use the following catch for every time we call member.send. Unfortunately no other way around this. See https://discordjs.guide/popular-topics/errors.html#cannot-send-messages-to-this-user
-            .catch((error) => {
-                console.log(
-                    chalk.red(
-                        `[API] ${member.user.username} cannot be messaged. Not DMing! Error code: ${error.code}`
-                    )
-                );
-            });
+    await targetMember
+      .send({ embeds: [dmEmbed] }) // Use the following catch for every time we call member.send. Unfortunately no other way around this. See https://discordjs.guide/popular-topics/errors.html#cannot-send-messages-to-this-user
+      .catch((error) => {
+        console.log(
+          chalk.red(`[API] ${member.user.username} cannot be messaged. Not DMing! Error code: ${error.code}`)
+        );
+      });
 
-        await interaction.reply({ embeds: [embed] });
-    },
+    await interaction.reply({ embeds: [embed] });
+  },
 };

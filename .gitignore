@@ -1,6 +1,5 @@
 node_modules/
 .env
-.prettierrc
 jsconfig.json
 /.vs/slnx.sqlite
 .vs/

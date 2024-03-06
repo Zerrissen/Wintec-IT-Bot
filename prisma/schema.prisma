@@ -4,18 +4,46 @@ generator client {
 
 datasource db {
     provider = "postgresql"
-    url = env("POSTGRES_URL")
+    url      = env("POSTGRES_URL")
 }
 
-// Database for a discord bot, which is for a single server of IT students.
-// The bot will be used to manage the server, and to provide information to the students.
-
+// Database table schemas. 
 model User {
-    id String @id @default(uuid())
-    discordId String @unique
-    email String
-    verified Boolean @default(false)
-    wizardPoints Int @default(0)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    discordId    String    @id
+    username     String    @unique
+    email        String?   @unique
+    verified     Boolean   @default(false)
+    wizardPoints Int       @default(0)
+    createdAt    DateTime? @default(now())
+    updatedAt    DateTime  @updatedAt
+    userRole     UserRole  @default(Visitor)
+}
+
+enum UserRole {
+    Visitor
+    Student
+    Alumni
+}
+
+model Response {
+    id        String       @id @default(uuid())
+    response  String
+    type      ResponseType
+    createdAt DateTime     @default(now())
+    updatedAt DateTime     @updatedAt
+}
+
+// Used to restrict the type of response to either morning or afternoon.
+enum ResponseType {
+    Morning
+    Afternoon
+}
+
+model Guild {
+    guildId       String    @id
+    guildName     String?
+    usingVerify   Boolean   @default(false)
+    verifyChannel String?
+    joinedAt      DateTime? @default(now())
+    updatedAt     DateTime  @updatedAt
 }

@@ -13,7 +13,8 @@
 				"christian-kohler.npm-intellisense",
 				"humao.rest-client",
 				"GitHub.copilot",
-				"Prisma.prisma"
+				"Prisma.prisma",
+				"akmarnafi.comment-headers"
 			]
 		}
 	}
