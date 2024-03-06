@@ -16,7 +16,7 @@ WORKDIR /home/${USER}
 COPY --chown=${USER}:${USER}  . .
 
 RUN rm -rf node_modules && \
-    npm ci && \
+    npm ci
 
 COPY --chown=${USER}:${USER} package*.json ./
 
