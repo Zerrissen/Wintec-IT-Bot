@@ -1,0 +1,12 @@
+.vscode
+.devcontainer
+.github
+node_modules
+.env
+.git
+.gitignore
+.prettierrc
+README.md
+LICENSE
+Dockerfile
+.dockerignore
