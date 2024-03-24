@@ -1,7 +1,7 @@
 // This command will begin a manual check for all users with the "Verified" and update their verified status in the database accordingly.
 
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
-const { upsertUser } = require("../../db/user");
+const { getUserById, upsertUser } = require("../../db/user");
 
 module.exports = {
   data: new SlashCommandBuilder().setName("refresh").setDescription("Refreshes server verification system."),
@@ -13,17 +13,18 @@ module.exports = {
 
     // fetch all members
     const members = await interaction.guild.members.fetch();
-    const verifiedRole = interaction.guild.roles.cache.find((role) => role.name === "Verified");
 
     // iterate over members and update their status in the database
     members.forEach(async (member) => {
-      if (member.roles.cache.has(verifiedRole)) {
+      if (member.roles.cache.some((role) => role.name === "Verified")) {
+        console.log(member);
+        console.log(getUserById(member.id));
         await upsertUser({ discordId: member.id, username: member.user.username, verified: true });
       } else {
         await upsertUser({ discordId: member.id, username: member.user.username, verified: false });
       }
-    });    
-    
+    });
+
     const embed = new EmbedBuilder()
       .setColor(0x0f4a00)
       .setDescription(
