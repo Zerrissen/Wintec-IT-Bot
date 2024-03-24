@@ -16,12 +16,12 @@ module.exports = {
     const userProfile = getUserById(selectedUserId);
     if (userProfile === null) {
       return await interaction.reply({
-        content: `@${selectedUser.username}, doesnt have a balance.`,
+        content: `@${selectedUser.username}, doesn't exist.`,
         ephemeral: true,
       });
     } else {
-      const userPoints = userProfile.wizardPoints;
-      const userLevel = String(Math.floor(Math.log2(userPoints / 10 + 1)) + 1);
+      const userPoints = userProfile.wizardPoints || 0;
+      const userLevel = String(Math.floor(Math.log2(userPoints / 10 + 1)) + 1) || 1;
       const totalPointsToNextLevel = 10 * (Math.pow(2, parseInt(userLevel)) - 1);
 
       const reqXp = String(totalPointsToNextLevel - userPoints);
