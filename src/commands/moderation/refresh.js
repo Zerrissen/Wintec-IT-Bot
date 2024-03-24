@@ -17,8 +17,6 @@ module.exports = {
     // iterate over members and update their status in the database
     members.forEach(async (member) => {
       if (member.roles.cache.some((role) => role.name === "Verified")) {
-        console.log(member);
-        console.log(getUserById(member.id));
         await upsertUser({ discordId: member.id, username: member.user.username, verified: true });
       } else {
         await upsertUser({ discordId: member.id, username: member.user.username, verified: false });
