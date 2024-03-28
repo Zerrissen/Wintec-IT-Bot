@@ -9,7 +9,15 @@ This is a discord bot used by Wintec (Waikato Institute of Technology) students 
 It is being designed and developed by the students, for the students; present, past, and future.
 
 ## Installation
-To install and setup this bot yourself, you require the following dependancies:
+
+There are two ways to deploy this bot. The first, and easiest way is to deploy the docker container:
+```
+docker pull zerrissen/wintec-it-bot:latest
+
+docker run -p 127.0.0.1:3000:3000 -e TOKEN=<TOKEN> -e CLIENT_ID=<ID> -e MAIL_USER=<USER> -e MAIL_PASS=<PASS> -e POSTGRES_URL="<URL>" <image_name>
+```
+
+ To install and setup this bot yourself, you require the following dependancies:
 > - Node version >20.0.0
 > - npm version >9.6.5
 
@@ -23,10 +31,8 @@ Or download the source directly from the latest release [here](https://github.co
 
 You will also have to set up the following environment variables:
 > - "TOKEN" (Bot token)
-> - "MONGO_DB" (MongoDB connection string)
-> - "DB_NAME" (name of the actual database)
+> - "POSTGRES_URL" (PostgreSQL connection string)
 > - "CLIENT_ID" (Bot user ID)
-> - "GUILD_ID" (Server ID)
 > - "MAIL_USER" (Email address for the bot. We use Zoho mail)
 > - "MAIL_PASS" (Bot email account password)
 
@@ -43,15 +49,12 @@ And that's it! You can now run the bot with:
 node .
 ```
 
-## Usage
-Documentation is currently being worked on, sorry for the disappointment! We hope to get this released for you soon.
-
 ## Contributers
 The Wintec IT Student server wouldn't be possible without contributions from various people. Many thanks to the following!
 
 Bot contributers:
 - [@Zerrissen](https://github.com/Zerrissen)
-- [@unicornenjoyer](https://github.com/unicornenjoyer)
+- [@SkulduggeryDude](https://github.com/SkulduggeryDude)
 
 Server contributers:
 - [@Zerrissen](https://github.com/Zerrissen)
