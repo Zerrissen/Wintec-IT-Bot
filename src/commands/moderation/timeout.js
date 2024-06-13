@@ -76,7 +76,7 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setColor(0x0f4a00)
       .setDescription(
-        `:white_check_mark:  Wee woo, @${target.username} has been **timed out** for ${duration} minutes | ${reason}`
+        `:white_check_mark:  Wee woo, @${target.username} has been **timed out** for ${duration} seconds | ${reason}`
       );
 
     const dmEmbed = new EmbedBuilder()
