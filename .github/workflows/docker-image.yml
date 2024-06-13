@@ -17,4 +17,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag zerrissen/wintec-it-bot:latest
     - name: Public Docker image
-      run: docker push zerrissen/wintec-it-bot:latest
+      run: |
+        docker login -u Zerrissen -p ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker push zerrissen/wintec-it-bot:latest
