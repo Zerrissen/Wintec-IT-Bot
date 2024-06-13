@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI on main update
 
 on:
   pull_request:
@@ -9,7 +9,6 @@ on:
 jobs:
   if_merged:
     if: github.event.pull_request.merged == true
-    build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
