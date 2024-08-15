@@ -19,7 +19,7 @@
   "homepage": "https://github.com/Zerrissen/Wintec-IT-Bot#readme",
   "dependencies": {
     "@prisma/client": "^5.10.2",
-    "axios": "^1.6.0",
+    "axios": "^1.7.4",
     "bad-words": "^3.0.4",
     "chalk": "^4.1.2",
     "discord.js": "^14.9.0",
